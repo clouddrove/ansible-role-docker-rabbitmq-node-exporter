@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -eux -o pipefail
+
+# pull the image before so we dont first remove the container and then pull
+docker pull kbudde/rabbitmq-exporter:"{{ rabbitmq_exporter_version }}"
+
+docker rm -f -v rabbitmq_exporter || :
+
+docker run -rm --name=rabbitmq_exporter \
+	-p 9419:"{{ rabbitmq_exporter_server_port }}" \
+	-e RABBIT_URL='{{ rabbitmq_server_url }}' \
+	-e RABBIT_USER='{{ rabbitmq_server_user }}' \
+	-e RABBIT_PASSWORD='{{ rabbitmq_server_password }}' \
+	-e RABBIT_TIMEOUT='{{ rabbitmq_server_timeout }}' \
+	-e MAX_QUEUES='{{ rabbitmq_server_max_queues }}' \
+   kbudde/rabbitmq-exporter:"{{ rabbitmq_exporter_version }}"

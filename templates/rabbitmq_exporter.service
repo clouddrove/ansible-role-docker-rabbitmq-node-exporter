@@ -1,0 +1,9 @@
+[Unit]
+Description=rabbitmq exporter Server
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStart=/usr/local/bin/rabbitmq_exporter
+[Install]
+WantedBy=multi-user.target
