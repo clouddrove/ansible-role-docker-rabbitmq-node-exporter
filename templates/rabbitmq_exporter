@@ -7,7 +7,7 @@ docker pull kbudde/rabbitmq-exporter:"{{ rabbitmq_exporter_version }}"
 
 docker rm -f -v rabbitmq_exporter || :
 
-docker run -rm --name=rabbitmq_exporter \
+docker run --name=rabbitmq_exporter \
 	-p 9419:"{{ rabbitmq_exporter_server_port }}" \
 	-e RABBIT_URL='{{ rabbitmq_server_url }}' \
 	-e RABBIT_USER='{{ rabbitmq_server_user }}' \
