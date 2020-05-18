@@ -7,7 +7,6 @@ rabbitmq_exporter_server_bind: 0.0.0.0
 rabbitmq_exporter_server_password: false
 
 rabbitmq_exporter_version: v1.0.0-RC6.1
-rabbitmq_server_password: ''
 
 rabbitmq_server_port: 15672
 rabbitmq_server_url: "http://{{ PrivateIp }}:{{ rabbitmq_server_port }}"
