@@ -67,7 +67,7 @@ This module has a few dependencies:
 
 ## What Includes
 
-Followiing things includes in this role:
+Following things includes in this role:
 
 - rabbitmq-node-exporter
 
@@ -99,10 +99,9 @@ Followiing things includes in this role:
   rabbitmq_exporter_server_password: false
   rabbitmq_exporter_version: v1.0.0-RC6.1
   rabbitmq_server_port: 15672
-  rabbitmq_server_password: ''
+  rabbitmq_server_password: ""
   rabbitmq_server_url: "rabbitmq://{{ PublicIp }}:{{ rabbitmq_server_port }}"
   rabbitmq_server_user: "admin"
-  rabbitmq_server_password: "fnGEZVH3pdn3DZGM"
   rabbitmq_server_timeout: 30
   rabbitmq_server_max_queues: 0
 ```
