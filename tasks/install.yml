@@ -1,30 +1,30 @@
 ---
 
-- name: copy rabbitmq exporter script
-  template:
+- name: Copy rabbitmq exporter script
+  ansible.builtin.template:
     src: "rabbitmq_exporter"
     dest: /usr/local/bin/rabbitmq_exporter
     mode: 0755
     owner: root
     group: root
 
-- name: copy rabbitmq exporter script
-  template:
+- name: Copy rabbitmq exporter script
+  ansible.builtin.template:
     src: "rabbitmq_exporter.service"
     dest: /etc/systemd/system/rabbitmq_exporter.service
     mode: 0644
     owner: root
     group: root
 
-- name: restart rabbitmq exporter service is restarted
-  service:
-    name: rabbitmq_exporter
+- name: Restart rabbitmq exporter service is restarted
+  ansible.builtin.service:
+    name: Rabbitmq_exporter
     state: restarted
     enabled: true
   changed_when: false
 
-- name: wait for rabbitmq exporter to become ready
-  wait_for:
+- name: Wait for rabbitmq exporter to become ready
+  ansible.builtin.wait_for:
     host: "{{ rabbitmq_exporter_server_bind }}"
     port: "{{ rabbitmq_exporter_server_port }}"
     state: started
